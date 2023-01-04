@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class Lab3 {
     public static void main(String[] args) {
-        String address = "Ha noiff";
+        String address = "Ha noi";
         List<GiaoDich> listGiaoDich = new ArrayList<>();
         listGiaoDich.add(new GiaoDich(new KhachHang("Tuan", "Hung yen"), 2021, "Dien thoai IPhone", 100));
         listGiaoDich.add(new GiaoDich(new KhachHang("Quyen", "Hai duong"), 2021, "Dien thoai Samsung", 50));
@@ -58,6 +58,24 @@ public class Lab3 {
         int list37 = listGiaoDich.stream().filter(giaoDich -> giaoDich
                 .getTrader().getAddress().equals(address)).mapToInt(value -> value.getAmount()).sum();
         System.out.println(list37);
+
+        int a = 1;
+        Integer aa = new Integer(1);
+        System.out.println(a==aa);
+        /** limit(n): trả về 1 stream với số lượng phần tử tối đa là n phần tử. Ý nghĩa tương tự từ khóa limit trong SQL
+         *
+         */
+//        List<GiaoDich> list48 = listGiaoDich.stream().sorted().limit(2).collect(Collectors.toList());
+
+        /** anyMatch: sử dụng để kiểm tra xem các phần tử của stream, có bất kỳ phần tử nào thỏa mãn 1 điều kiện nào đó hay không
+         *
+         */
+        boolean list49 = listGiaoDich.stream().anyMatch(giaoDich -> giaoDich.getAmount() ==100);
+
+        /** allMatch: chỉ trả về true khi tất cả các phần tử trong stream đều thỏa mãn điều kiện
+         *
+         */
+        boolean list50 = listGiaoDich.stream().allMatch(giaoDich -> giaoDich.getAmount() == 100);
 
     }
 }
